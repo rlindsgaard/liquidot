@@ -7,11 +7,10 @@ class LiquiDotTest < Minitest::Test
       LiquiDot::format("Hello world!")
   end
 
-  def test_format_liquid_text
+  def test_format_liquid_frontmatter
     assert_equal "Hello dave!",
       LiquiDot::format(
-        "Hello {{ name }}!",
-        {'name' => 'dave'}
+        "---\nname: dave\n---\nHello {{ name }}!",
       )
   end
 end
