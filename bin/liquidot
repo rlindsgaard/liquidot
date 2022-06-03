@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby3.0
+
+require 'liquidot'
+puts LiquiDot::hello_world
