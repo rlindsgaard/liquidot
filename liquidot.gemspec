@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.executables = ['liquidot']
   s.add_runtime_dependency 'liquid'
+  s.add_runtime_dependency 'ruby-graphviz'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'rake'
 end

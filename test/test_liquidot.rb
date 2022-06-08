@@ -13,4 +13,18 @@ class LiquiDotTest < Minitest::Test
         "---\nname: dave\n---\nHello {{ name }}!",
       )
   end
+
+  def test_format_hellow_word
+    expected = "digraph { hello -> dave }"
+    assert_equal LiquiDot::format("---\nname: dave\n---\ndigraph { hello -> {{ name }} }"),
+      expected
+  end
+
+  def test_parse_file
+    assert_equal "digraph G {
+  hello -> dave
+}
+",
+      LiquiDot::format(File.read('examples/hello_world.dot'))
+  end
 end

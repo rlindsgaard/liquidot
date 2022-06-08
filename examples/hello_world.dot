@@ -1,0 +1,6 @@
+---
+name: dave
+---
+digraph G {
+  hello -> {{ name }}
+}
