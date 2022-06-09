@@ -4,19 +4,19 @@ require 'liquidot'
 class LiquiDotTest < Minitest::Test
   def test_format_plain_text
     assert_equal "Hello world!",
-      LiquiDot::format("Hello world!")
+      LiquiDot::Template.parse_string("Hello world!").render()
   end
 
   def test_format_liquid_frontmatter
     assert_equal "Hello dave!",
-      LiquiDot::format(
+      LiquiDot::Template.parse_string(
         "---\nname: dave\n---\nHello {{ name }}!",
-      )
+      ).render()
   end
 
-  def test_format_hellow_word
+  def test_format_hellow_world
     expected = "digraph { hello -> dave }"
-    assert_equal LiquiDot::format("---\nname: dave\n---\ndigraph { hello -> {{ name }} }"),
+    assert_equal LiquiDot::Template.parse_string("---\nname: dave\n---\ndigraph { hello -> {{ name }} }").render(),
       expected
   end
 
@@ -25,6 +25,14 @@ class LiquiDotTest < Minitest::Test
   hello -> dave
 }
 ",
-      LiquiDot::format(File.read('examples/hello_world.dot'))
+      LiquiDot::Template.parse('examples/hello_world.dot').render()
+  end
+
+  def test_parse_file_override_arg
+    assert_equal "digraph G {
+  hello -> world
+}
+",
+      LiquiDot::Template.parse('examples/hello_world.dot').render({"name" => 'world'})
   end
 end

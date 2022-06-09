@@ -2,4 +2,4 @@
 
 require 'liquidot'
 
-puts LiquiDot::format(ARGF.read)
+puts LiquiDot::Template.parse(ARGV[0]).render()

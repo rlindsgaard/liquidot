@@ -37,8 +37,6 @@ if rest.empty?
   exit(-1)
 end
 
-raw_input = File.read(rest.pop)
-
-rendered_graphviz = LiquiDot::format(raw_input)
+rendered_graphviz = LiquiDot::Template.parse(rest.pop).render()
 
 GraphViz.parse_string(rendered_graphviz).output(graphviz_args)
