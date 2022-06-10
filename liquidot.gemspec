@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name      = 'liquidot'
-  s.version   = '0.0.2-dev'
+  s.version   = '0.0.3'
   s.platform  = Gem::Platform::RUBY
   s.summary   = 'A simple tool for generating dot files using liquid templating'
   s.description = "Generates graphviz DOT files formatted using liquid"
